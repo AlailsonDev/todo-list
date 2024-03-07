@@ -1,7 +1,38 @@
+import { useState } from "react";
+import Todo from "./components/Todo";
+import TodoForm from "./components/TodoForm";
+
 export default function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: "Criar funcionalidade X no sistema",
+      category: "trabalho",
+      isCompleted: false,
+    },
+    {
+      id: 2,
+      text: "Ir para a academia",
+      category: "Pessoal",
+      isCompleted: false,
+    },
+    {
+      id: 3,
+      text: "Estudar React",
+      category: "Estudos",
+      isCompleted: false,
+    },
+  ]);
+
   return (
-    <>
-      <h1>Olá, mundo!</h1>
-    </>
+    <div className="app">
+      <h1>Lista de Tarefas</h1>
+      <div className="todo-list">
+        {todos.map((todo) => (
+          <Todo todo={todo} />
+        ))}
+      </div>
+      <TodoForm />
+    </div>
   );
 }
